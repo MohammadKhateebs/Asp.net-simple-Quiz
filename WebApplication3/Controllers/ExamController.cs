@@ -46,7 +46,8 @@ namespace WebApplication3.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
+                    TempData["Tag"] = "Login failed";
+               
                     return RedirectToAction("Login");
                  
                 }

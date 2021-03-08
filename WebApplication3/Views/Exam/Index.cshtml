@@ -7,68 +7,71 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<div class="container bg-info">
+    <table class="table">
 
-    <form asp-action="Index">
-        <tbody>
-            @foreach (Quiz Qustion in ViewBag.Qustion)
-            {
+        <form asp-action="Index">
+            <tbody>
+                @foreach (Quiz Qustion in ViewBag.Qustion)
+                {
 
-                <legend>@Qustion.qustion</legend>
-                <div>
-                    <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 1" value="@Qustion.option1" required="">
-                    <label for="@Qustion.id 1">1-@Qustion.option1</label>
-                </div>
-
-                <div>
-                    <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 2" value="@Qustion.option2" required="">
-                    <label for="@Qustion.id 2">2-@Qustion.option2</label>
-                </div>
-                <div>
-                    <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 3" value="@Qustion.option3" required="">
-                    <label for="@Qustion.id 3">3-@Qustion.option3</label>
-                </div>
-                <div>
-                    <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 4" value="@Qustion.option4" required="">
-                    <label for="@Qustion.id 4">4-@Qustion.option4</label>
-                </div>
-                <div>
-                    @if (ViewData["Correct Answer " + Qustion.id] != null && ViewData["Correct Answer " + Qustion.id].Equals("true"))
-                    {
-                    <div style="background-color:yellow">
-                        <b style="color:forestgreen;">Correct Answer: </b>@ViewData["Answer" + Qustion.id]
-
+                    <legend>@Qustion.qustion</legend>
+                    <div>
+                        <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 1" value="@Qustion.option1" required="">
+                        <label for="@Qustion.id 1">1-@Qustion.option1</label>
                     </div>
-                    }
-                    else if (ViewData["Correct Answer " + Qustion.id] != null)
-                    {
-                        
-                        <b style="color:lightcoral">Wrong Answer:</b> @ViewData["Answer" + Qustion.id]
-                        <br />
-                        <b style="color:red">The correct answer: </b>@ViewData["Correct Answer " + Qustion.id]
-                        <br />
 
-                    }
-                </div>
+                    <div>
+                        <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 2" value="@Qustion.option2" required="">
+                        <label for="@Qustion.id 2">2-@Qustion.option2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 3" value="@Qustion.option3" required="">
+                        <label for="@Qustion.id 3">3-@Qustion.option3</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="@Qustion.id" asp-for='@ViewData["Answer" + Qustion.id]' id="@Qustion.id 4" value="@Qustion.option4" required="">
+                        <label for="@Qustion.id 4">4-@Qustion.option4</label>
+                    </div>
+                    <div>
+                        @if (ViewData["Correct Answer " + Qustion.id] != null && ViewData["Correct Answer " + Qustion.id].Equals("true"))
+                        {
+                            <div style="background-color:yellow">
+                                <b style="color:forestgreen;">Correct Answer: </b>@ViewData["Answer" + Qustion.id]
 
-            }
+                            </div>
+                        }
+                        else if (ViewData["Correct Answer " + Qustion.id] != null)
+                        {
 
-            <div>
-                <input class="btn-primary center-block " type="submit" name="Submit Quize" value="answer" />
+                            <b style="color:lightcoral">Wrong Answer:</b> @ViewData["Answer" + Qustion.id]
+                            <br />
+                            <b style="color:red">The correct answer: </b>@ViewData["Correct Answer " + Qustion.id]
+                            <br />
 
-            </div>
-            </div>
-            <hr />
-            <hr />
-            @if (ViewData["mark"] == null && ViewData["from"] == null)
-            {
+                        }
+                    </div>
 
-            }
-            else
-            {
-                <b style="color:forestgreen">Your  Mark= </b> @ViewData["mark"]
-                <b style="color:forestgreen">/</b>@ViewData["form"]
-                <br />
-            }
+                }
+
+                <div>
+                   
+                        <input class="btn-primary center-block " type="submit" name="Submit Quize" value="answer" />
+                
+                    </div>
+</div>
+<hr />
+<hr />
+@if (ViewData["mark"] == null && ViewData["from"] == null)
+{
+
+}
+else
+{
+    <b style="color:forestgreen">Your  Mark= </b> @ViewData["mark"]
+    <b style="color:forestgreen">/</b>@ViewData["form"]
+    <br />
+}
 
 </form>
+</div>
